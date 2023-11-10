@@ -17,42 +17,70 @@ import java.math.BigInteger;
 public class ProductXref {
 
     @Id
-    private BigInteger DH_ID_XREF;
-    private String PKEY_SRC_OBJECT;
+    @Column(name = "DH_ID_XREF")
+    private BigInteger dhIdXref;
+    @Column(name = "PKEY_SRC_OBJECT")
+    private String pkeySrcObject;
     @Column(name = "C_DH_ID")
     private BigInteger dhId;
     @Column(name = "ROWID_SYSTEM")
     private String rowIdSystem;
-    private java.sql.Date SRC_LUD;
-    private BigInteger PUT_UPDATE_MERGE_IND;
-    private BigInteger INTERACTION_ID;
-    private BigInteger HUB_STATE_IND;
-    private BigInteger PROMOTE_IND;
-    private String NULL_INDICATOR_BITMAP;
-    private String CREATOR;
-    private java.sql.Date CREATE_DATE;
-    private String UPDATED_BY;
-    private java.sql.Date LAST_UPDATE_DATE;
+    @Column(name = "SRC_LUD")
+    private java.sql.Date srcLud;
+    @Column(name = "PUT_UPDATE_MERGE_IND")
+    private BigInteger putUpdateMergeInd;
+    @Column(name = "INTERACTION_ID")
+    private BigInteger interactionId;
+    @Column(name = "HUB_STATE_IND")
+    private BigInteger hubStateInd;
+    @Column(name = "PROMOTE_IND")
+    private BigInteger promoteInd;
+    @Column(name = "NULL_INDICATOR_BITMAP")
+    private String nullIndicatorBitMap;
+    @Column(name = "CREATOR")
+    private String creator;
+    @Column(name = "CREATE_DATE")
+    private java.sql.Date createDate;
+    @Column(name = "UPDATED_BY")
+    private String updatedBy;
+    @Column(name = "LAST_UPDATE_DATE")
+    private java.sql.Date lastUpdatedDate;
     @Column(name = "DELETED_IND")
     private String deletedInd;
     @Column(name = "DELETED_BY")
     private String deletedBy;
-    private java.sql.Date DELETED_DATE;
+    @Column(name = "DELETED_DATE")
+    private java.sql.Date deletedDate;
     @Column(name = "DH_TYPE_ID")
     private BigInteger dhTypeId;
-    private BigInteger DH_SUBTYPE_ID;
-    private String STATUS;
-    private java.sql.Date START_DATE;
-    private java.sql.Date END_DATE;
-    private BigInteger DH_SRC_LANGUAGE_ID;
-    private String DESCR;
-    private String SHORT_DESCR;
-    private BigInteger DH_PUB_ID;
-    private String EDITION_NUM;
-    private java.sql.Date PUB_DATE;
-    private java.sql.Date OUT_OF_PRINT_DATE;
-    private String SUBSCRIPTION_TYPE;
-    private BigInteger DH_OWNER_REG_ID;
-    private String PRIMARY_IND;
-    private String EXCEPTION_FLAG;
+    @Column(name = "DH_SUBTYPE_ID")
+    private BigInteger dhSubTypeId;
+    @Column(name = "STATUS")
+    private String status;
+    @Column(name = "START_DATE")
+    private java.sql.Date startDate;
+    @Column(name = "END_DATE")
+    private java.sql.Date endDate;
+    @Column(name = "DH_SRC_LANGUAGE_ID")
+    private BigInteger dhSrcLanguageId;
+    @Column(name = "DESCR")
+    private String descr;
+    @Column(name = "SHORT_DESCR")
+    private String shortDescr;
+    @Column(name = "DH_PUB_ID")
+    private BigInteger dhPubId;
+    @Column(name = "EDITION_NUM")
+    private String editionNum;
+    @Column(name = "PUB_DATE")
+    private java.sql.Date pubDate;
+    @Column(name = "OUT_OF_PRINT_DATE")
+    private java.sql.Date outOfPrintDate;
+    @Column(name = "SUBSCRIPTION_TYPE")
+    private String subscriptionType;
+    @Column(name = "DH_OWNER_REG_ID")
+    private BigInteger dhOwnerRegId;
+    @Column(name = "PRIMARY_IND")
+    private String primaryInd;
+    @Column(name = "EXCEPTION_FLAG")
+    private String executionFlag;
 }

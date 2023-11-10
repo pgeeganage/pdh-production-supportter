@@ -1,7 +1,8 @@
 package com.wiley.pdh.pdhproductionsupportter.controller;
 
 import com.wiley.pdh.pdhproductionsupportter.service.ArticleDeleteService;
-import com.wiley.pdh.pdhproductionsupportter.service.SurvivorShipLogService;
+import com.wiley.pdh.pdhproductionsupportter.service.EcoreJanisService;
+import com.wiley.pdh.pdhproductionsupportter.service.ProductDatesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ import java.util.List;
 public class PdhArticleSupportControllerV1 {
 
     private final ArticleDeleteService articleDeleteService;
-    private final SurvivorShipLogService survivorShipLogService;
+    private final EcoreJanisService ecoreJanisService;
+    private final ProductDatesService productDatesService;
 
 
     // Article deletion in PDH (Single Article Deletion)
@@ -36,6 +38,13 @@ public class PdhArticleSupportControllerV1 {
     @PatchMapping("/re-save/{dhId}")
     public ResponseEntity<String> addArticleToEcoreJanis(@PathVariable("dhId") BigInteger dhId,
                                                          @RequestParam("ticketId") String ticketId) {
-        return ResponseEntity.ok(survivorShipLogService.addArticleToEcoreJanis(dhId, ticketId));
+        return ResponseEntity.ok(ecoreJanisService.addArticleToEcoreJanis(dhId, ticketId));
+    }
+
+    // Could you please remove the withdrawn date in PDH
+    @PatchMapping("/remove-withdrawn-date/{dhId}")
+    public ResponseEntity<String> removeWithdrawnDate(@PathVariable("dhId") BigInteger dhId,
+                                                      @RequestParam("ticketId") String ticketId) {
+        return ResponseEntity.ok(productDatesService.removeWithdrawnDate(dhId, ticketId));
     }
 }

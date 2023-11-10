@@ -50,10 +50,10 @@ public class JournalVendorBookServiceImpl implements JournalVendorBookService {
                             survivorShipLogRepository.findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(
                                     updatedContrib.getRowIdSystem(), lastSurvivorShip.getLogId()).toString());
                 }
-                throw new SysRootException(String.format("ProductContributor with C_DH_ID: {%d} doesn't exist in 'C_PRODUCT_CONTRIBUTOR_XREF' table.", dhId));
+                throw new SysRootException(String.format(Utility.EX_PRODUCT_CONTRIBUTOR_DOES_NOT_EXISTING_IN_C_PRODUCT_CONTRIBUTOR_XREF, dhId));
             }
-            throw new SysRootException(String.format("ProductContributor with DH_ID: {%d} and DH_PRODREG_ID: {%d} doesn't exist in 'C_PRODUCT_CONTRIBUTOR' table.", dhId, region.getDhId()));
+            throw new SysRootException(String.format(Utility.EX_PRODUCT_CONTRIBUTOR_DOES_NOT_EXISTING_IN_C_PRODUCT_CONTRIBUTOR, dhId, region.getDhId()));
         }
-        throw new SysRootException(String.format("ProductRegion with DH_PROD_ID: {%d} doesn't exist in 'C_PRODUCT_REGION' table.", dhProdId));
+        throw new SysRootException(String.format(Utility.EX_PRODUCT_REGION_DOES_NOT_EXISTING_IN_C_PRODUCT_REGION, dhProdId));
     }
 }

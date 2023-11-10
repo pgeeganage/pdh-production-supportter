@@ -23,7 +23,6 @@ import java.util.Optional;
 public class IdentifierDeleteServiceImpl implements IdentifierDeleteService {
 
     private final IdentifierRepository identifierRepository;
-    private final ProductRepository productRepository;
     private final SurvivorShipLogRepository survivorShipLogRepository;
     private final IdentifierXrefRepository identifierXrefRepository;
 
@@ -31,20 +30,8 @@ public class IdentifierDeleteServiceImpl implements IdentifierDeleteService {
     @Override
     public String softDeleteIdentifierByDhProId(BigInteger dhProdId, String identCd, String ticketId) {
 
-        validateIdentifierDeleteParams(dhProdId, identCd, ticketId);
+        Utility.validateParams(dhProdId, identCd, ticketId);
         return softDeleteIdentifier(dhProdId, identCd, ticketId);
-    }
-
-    private static void validateIdentifierDeleteParams(BigInteger dhProdId, String identCd, String ticketId) {
-        if (null == dhProdId) {
-            throw new IllegalArgumentException("'DH_ID' is required!");
-        }
-        if (null == identCd || identCd.isBlank()) {
-            throw new IllegalArgumentException("'IDENT_CD' is required!");
-        }
-        if (null == ticketId || ticketId.isBlank()) {
-            throw new IllegalArgumentException("'Ticket ID' is required!");
-        }
     }
 
     private String softDeleteIdentifier(BigInteger dhProdId, String identCd, String ticketId) {
@@ -66,10 +53,10 @@ public class IdentifierDeleteServiceImpl implements IdentifierDeleteService {
                         survivorShipLogRepository.findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(
                                 updatedIdentifierXref.getRowIdSystem(), lastSurvivorShip.getLogId()).toString());
             } else {
-                throw new SysRootException(String.format("Identifier was not found in 'C_IDENTIFIER_XREF' table by DH_PROD_ID: {%d} and IDENT_CD: {%s}", dhProdId, identCd));
+                throw new SysRootException(String.format(Utility.EX_IDENTIFIER_DOES_NOT_EXISTING_IN_C_IDENTIFIER_XREF, dhProdId, identCd));
             }
         } else {
-            throw new SysRootException(String.format("Identifier was not found in 'C_IDENTIFIER' table by DH_PROD_ID: {%d} and IDENT_CD: {%s}", dhProdId, identCd));
+            throw new SysRootException(String.format(Utility.EX_IDENTIFIER_DOES_NOT_EXISTING_IN_C_IDENTIFIER, dhProdId, identCd));
         }
     }
 }

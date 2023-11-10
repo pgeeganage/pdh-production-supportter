@@ -22,37 +22,58 @@ public class ProductContributorXref {
     @Id
     @Column(name = "DH_ID_XREF")
     private BigInteger dhIdXref;
-    private String PKEY_SRC_OBJECT;
+    @Column(name = "PKEY_SRC_OBJECT")
+    private String pkeySrcObject;
     @Column(name = "C_DH_ID")
     private BigInteger cDhId;
     @Column(name = "ROWID_SYSTEM")
     private String rowIdSystem;
-    private java.sql.Date SRC_LUD;
-    private int PUT_UPDATE_MERGE_IND;
-    private int INTERACTION_ID;
-    private int HUB_STATE_IND;
+    @Column(name = "SRC_LUD")
+    private java.sql.Date srcLud;
+    @Column(name = "PUT_UPDATE_MERGE_IND")
+    private int putUpdateMergeInd;
+    @Column(name = "INTERACTION_ID")
+    private int interactionId;
+    @Column(name = "HUB_STATE_IND")
+    private int hubStateInd;
     @Column(name = "PROMOTE_IND")
     private int promoteInd;
-    private String NULL_INDICATOR_BITMAP;
-    private String CREATOR;
-    private java.sql.Date CREATE_DATE;
-    private String UPDATED_BY;
-    private java.sql.Date LAST_UPDATE_DATE;
+    @Column(name = "NULL_INDICATOR_BITMAP")
+    private String nullIndicatorBitmap;
+    @Column(name = "CREATOR")
+    private String creator;
+    @Column(name = "CREATE_DATE")
+    private java.sql.Date createDate;
+    @Column(name = "UPDATED_BY")
+    private String updatedBy;
+    @Column(name = "LAST_UPDATE_DATE")
+    private java.sql.Date lastUpdateDate;
     @Column(name = "DELETED_IND")
     private String deletedIndex;
     @Column(name = "DELETED_BY")
     private String deletedBy;
     @Column(name = "DELETED_DATE")
     private java.sql.Date deletedDate;
-    private int DH_PRODREG_ID;
-    private int DH_CONTRIB_ID;
-    private int DH_ROLETYPE_ID;
-    private java.sql.Date START_DATE;
-    private java.sql.Date END_DATE;
-    private String PRIMARY_IND;
-    private int DH_PRODTYPE_ID;
-    private String PRODREG_SRC_KEY;
-    private String EXCEPTION_FLAG;
-    private String CONTRIB_SRC_KEY;
-    private int ORDER_SEQ_NUM;
+    @Column(name = "DH_PRODREG_ID")
+    private int dhProdRegId;
+    @Column(name = "DH_CONTRIB_ID")
+    private int dhContribId;
+    @Column(name = "DH_ROLETYPE_ID")
+    private int dhRoletypeId;
+    @Column(name = "START_DATE")
+    private java.sql.Date startDate;
+    @Column(name = "END_DATE")
+    private java.sql.Date endDate;
+    @Column(name = "PRIMARY_IND")
+    private String primaryInd;
+    @Column(name = "DH_PRODTYPE_ID")
+    private int dhProdTypeId;
+    @Column(name = "PRODREG_SRC_KEY")
+    private String prodRegSrcKey;
+    @Column(name = "EXCEPTION_FLAG")
+    private String exceptionFlag;
+    @Column(name = "CONTRIB_SRC_KEY")
+    private String contribSrcKey;
+    @Column(name = "ORDER_SEQ_NUM")
+    private int orderSeqNum;
 }

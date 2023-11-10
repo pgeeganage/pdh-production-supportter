@@ -28,7 +28,7 @@ public class ArticleDeleteServiceImpl implements ArticleDeleteService {
 
     @Override
     public String softDeleteProductById(BigInteger dhId, String ticketId) {
-        validateProductDeleteParams(dhId, ticketId);
+        Utility.validateParams(dhId, ticketId);
         return softDeleteProduct(dhId, ticketId);
     }
 
@@ -36,19 +36,10 @@ public class ArticleDeleteServiceImpl implements ArticleDeleteService {
     public String softDeleteBulkProducts(List<BigInteger> dhIds, String ticketId) {
         List<String> survivorShipLog = new ArrayList<>();
         for (BigInteger dhId : dhIds) {
-            validateProductDeleteParams(dhId, ticketId);
+            Utility.validateParams(dhId, ticketId);
             survivorShipLog.add(softDeleteProduct(dhId, ticketId));
         }
         return Arrays.toString(survivorShipLog.toArray());
-    }
-
-    private static void validateProductDeleteParams(BigInteger dhId, String ticketId) {
-        if (null == dhId) {
-            throw new IllegalArgumentException("'DH_ID' is required!");
-        }
-        if (null == ticketId || ticketId.isBlank()) {
-            throw new IllegalArgumentException("'Ticket ID' is required!");
-        }
     }
 
     public String softDeleteProduct(BigInteger dhId, String ticketId) {
@@ -75,28 +66,4 @@ public class ArticleDeleteServiceImpl implements ArticleDeleteService {
         }
         return String.format(Utility.EX_PRODUCT_DOES_NOT_EXISTING_IN_C_PRODUCT, dhId);
     }
-
-//    public String softDeleteProduct(BigInteger dhId, String ticketId) {
-//        Optional<Product> cProductById = productRepository.findById(dhId);
-//        if (cProductById.isPresent()) {
-//            Product product = cProductById.get();
-//            if (Utility.ALIAS_YES.equals(product.getDeletedInd())) {
-//                throw new SysRootException(String.format(Utility.EX_PRODUCT_ALREADY_MARKED_AS_DELETED, dhId));
-//            }
-//            List<ProductXref> productXrefs = productXrefRepository.findByDhId(product.getDhId());
-//            if (null != productXrefs && !productXrefs.isEmpty()) {
-//                productRepository.markDeleteProductProcedure(product.getDhId(), ticketId);
-//                ProductXref updatedProductXref = productXrefRepository.findByDhIdAndDeletedIndAndDeletedBy(
-//                        product.getDhId(), Utility.ALIAS_YES, ticketId);
-//
-//                SurvivorShipLog latestLog = survivorShipLogRepository.findTopByStartTimeDesc();
-//                productRepository.executeSurvivorShip(updatedProductXref.getRowIdSystem().trim());
-//                return survivorShipLogRepository.findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(
-//                        updatedProductXref.getRowIdSystem(), latestLog.getLogId()).toString();
-//            } else {
-//                throw new SysRootException(String.format(Utility.EX_PRODUCT_DOES_NOT_EXISTING_IN_C_PRODUCT_XREF, dhId));
-//            }
-//        }
-//        throw new SysRootException(String.format(Utility.EX_PRODUCT_DOES_NOT_EXISTING_IN_C_PRODUCT, dhId));
-//    }
 }

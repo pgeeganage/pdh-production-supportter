@@ -41,10 +41,14 @@ public class IdentifierXref {
     private int promoteInd;
     @Column(name = "NULL_INDICATOR_BITMAP")
     private String nullIndicatorBitMap;
-    private String CREATOR;
-    private java.sql.Date CREATE_DATE;
-    private String UPDATED_BY;
-    private java.sql.Date LAST_UPDATE_DATE;
+    @Column(name = "CREATOR")
+    private String creator;
+    @Column(name = "CREATE_DATE")
+    private java.sql.Date createDate;
+    @Column(name = "UPDATED_BY")
+    private String updatedBy;
+    @Column(name = "LAST_UPDATE_DATE")
+    private java.sql.Date lastUpdateDate;
     @Column(name = "DELETED_IND")
     private String deletedInd;
     @Column(name = "DELETED_BY")
@@ -57,12 +61,20 @@ public class IdentifierXref {
     private BigInteger dhProdId;
     @Column(name = "IDENT_CD")
     private String identCd;
-    private String IDENT_SUBTYPE_CD;
-    private java.sql.Date START_DATE;
-    private java.sql.Date END_DATE;
-    private String STATUS;
-    private String PRIMARY_IND;
-    private BigInteger DH_PRODTYPE_ID;
-    private String PROD_SRC_KEY;
-    private String EXCEPTION_FLAG;
+    @Column(name = "IDENT_SUBTYPE_CD")
+    private String identSubtypeCd;
+    @Column(name = "START_DATE")
+    private java.sql.Date startDate;
+    @Column(name = "END_DATE")
+    private java.sql.Date endDate;
+    @Column(name = "STATUS")
+    private String status;
+    @Column(name = "PRIMARY_IND")
+    private String primaryInd;
+    @Column(name = "DH_PRODTYPE_ID")
+    private BigInteger dhProdTypeId;
+    @Column(name = "PROD_SRC_KEY")
+    private String prodSrcKey;
+    @Column(name = "EXCEPTION_FLAG")
+    private String exceptionFlag;
 }

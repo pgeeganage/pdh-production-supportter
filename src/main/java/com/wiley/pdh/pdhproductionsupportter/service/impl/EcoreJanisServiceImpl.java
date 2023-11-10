@@ -7,7 +7,7 @@ import com.wiley.pdh.pdhproductionsupportter.entity.SurvivorShipLog;
 import com.wiley.pdh.pdhproductionsupportter.repository.SurvivorShipLogRepository;
 import com.wiley.pdh.pdhproductionsupportter.repository.product.ProductRepository;
 import com.wiley.pdh.pdhproductionsupportter.repository.product.ProductXrefRepository;
-import com.wiley.pdh.pdhproductionsupportter.service.SurvivorShipLogService;
+import com.wiley.pdh.pdhproductionsupportter.service.EcoreJanisService;
 import com.wiley.pdh.pdhproductionsupportter.util.Utility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class SurvivorShipLogServiceImpl implements SurvivorShipLogService {
+public class EcoreJanisServiceImpl implements EcoreJanisService {
 
     private final SurvivorShipLogRepository survivorShipLogRepository;
     private final ProductRepository productRepository;
@@ -29,7 +29,7 @@ public class SurvivorShipLogServiceImpl implements SurvivorShipLogService {
 
     @Override
     public String addArticleToEcoreJanis(BigInteger dhId, String ticketId) {
-        validateAddArticleParams(dhId, ticketId);
+        Utility.validateParams(dhId, ticketId);
         SurvivorShipLog survivorShipLog = new SurvivorShipLog();
 
         List<ProductXref> productXrefs = productXrefRepository.findByDhId(dhId);
@@ -57,14 +57,5 @@ public class SurvivorShipLogServiceImpl implements SurvivorShipLogService {
         savedSurvivorShipLog.setEndTime(Date.valueOf(String.valueOf(LocalDateTime.now())));
         return String.format(Utility.INFO_ARTICLE_SUCCESSFULLY_ADDED_TO_ECORE_JANIS, dhId,
                 survivorShipLogRepository.save(savedSurvivorShipLog));
-    }
-
-    private static void validateAddArticleParams(BigInteger dhProdId, String ticketId) {
-        if (null == dhProdId) {
-            throw new IllegalArgumentException("'DH_ID' is required!");
-        }
-        if (null == ticketId || ticketId.isBlank()) {
-            throw new IllegalArgumentException("'Ticket ID' is required!");
-        }
     }
 }

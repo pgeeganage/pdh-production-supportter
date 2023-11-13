@@ -41,6 +41,8 @@ public class Utility {
     public static final String EX_PRODUCT_DATES_XREF_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES_XREF = "ProductDatesXref with DH_PRODREG_ID: {%d} doesn't exist in 'C_PRODUCT_DATES_XREF' table.";
     public static final String EX_PRODUCT_DATES_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES = "ProductDates with DH_PRODREG_ID: {%d} doesn't exist in 'C_PRODUCT_DATES' table.";
 
+    public static final String EX_SURVIVOR_SHIP_LOG_NOT_FOUND = "SurvivorShipLog not found for 'LOG_ID': {%d}";
+
 
 
 

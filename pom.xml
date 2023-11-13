@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wiley.pdh</groupId>
-    <artifactId>PDH-Production-Supportter</artifactId>
+    <artifactId>PDH-Production-Supporter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>PDH-Production-Supporter</name>
     <description>PDH-Production-Supporter</description>

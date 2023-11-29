@@ -47,7 +47,7 @@ public class IdentifierDeleteServiceImpl implements IdentifierDeleteService {
                 IdentifierXref updatedIdentifierXref = identifierXrefRepository.save(identifierXref);
 
                 SurvivorShipLog lastSurvivorShip = survivorShipLogRepository.findTopByStartTimeDesc();
-                survivorShipLogRepository.executeSurvivorShip(updatedIdentifierXref.getRowIdSystem());
+                survivorShipLogRepository.executeSurvivorShip(updatedIdentifierXref.getRowIdSystem().trim());
 
                 return String.format(Utility.INFO_IDENTIFIER_SUCCESSFULLY_MARKED_AS_DELETED, dhProdId, identCd,
                         survivorShipLogRepository.findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(

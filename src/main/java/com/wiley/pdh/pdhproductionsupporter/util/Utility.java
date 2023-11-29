@@ -16,6 +16,7 @@ public class Utility {
     public static final String FLAG_NO = "N";
     public static final String ROW_ID_SYS_WPP = "WPP";
     public static final BigInteger DH_PROD_TYPE_ID_4 = BigInteger.valueOf(4);
+    public static final String ART_WITHDRAWN_DATE = "ART_WITHDRAWN_DATE";
 
     /**
      * Info Messages

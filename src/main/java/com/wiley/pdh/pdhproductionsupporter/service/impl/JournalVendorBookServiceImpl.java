@@ -46,7 +46,7 @@ public class JournalVendorBookServiceImpl implements JournalVendorBookService {
 
                     ProductContributorXref updatedContrib = productContribXrefRepository.save(productContributorXref);
                     SurvivorShipLog lastSurvivorShip = survivorShipLogRepository.findTopByStartTimeDesc();
-                    survivorShipLogRepository.executeSurvivorShip(updatedContrib.getRowIdSystem());
+                    survivorShipLogRepository.executeSurvivorShip(updatedContrib.getRowIdSystem().trim());
                     return String.format(Utility.INFO_VENDOR_BOOK_DETAILS_SUCCESSFULLY_MARKED_AS_DELETED, dhProdId, dhId,
                             survivorShipLogRepository.findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(
                                     updatedContrib.getRowIdSystem(), lastSurvivorShip.getLogId()).toString());

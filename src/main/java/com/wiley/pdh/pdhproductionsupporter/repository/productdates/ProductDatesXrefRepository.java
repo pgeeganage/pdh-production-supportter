@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ProductDatesXrefRepository extends JpaRepository<ProductDatesXref, BigInteger> {
 
-    Optional<ProductDatesXref> findByDhProdRegId(BigInteger prodRegionId);
+    Optional<ProductDatesXref> findByDhProdRegIdAndDhDateTypeId(BigInteger prodRegionId, BigInteger dhDateTypeId);
 }

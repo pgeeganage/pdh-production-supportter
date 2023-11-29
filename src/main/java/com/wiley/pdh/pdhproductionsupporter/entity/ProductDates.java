@@ -24,9 +24,9 @@ public class ProductDates {
     @Column(name = "DH_ID")
     private BigInteger dhId;
     @Column(name = "DH_PRODREG_ID")
-    private int dhProdRegId;
+    private BigInteger dhProdRegId;
     @Column(name = "DH_DATE_TYPE_ID")
-    private int dhDateTypeId;
+    private BigInteger dhDateTypeId;
     @Column(name = "DATE_VALUE")
     private java.sql.Date dateValue;
     @Column(name = "START_DATE")

@@ -30,7 +30,7 @@ public class ProductDatesServiceImpl implements ProductDatesService {
 
     @Override
     public String removeWithdrawnDate(BigInteger dhId, String ticketId) {
-
+        Utility.validateParams(dhId, ticketId);
         Optional<Product> product = productRepository.findById(dhId);
         if (product.isPresent()) {
             Optional<ProductRegion> region = productRegionRepository.findByDhProdId(dhId);
@@ -56,9 +56,9 @@ public class ProductDatesServiceImpl implements ProductDatesService {
                                 updatedDatesXref.getRowIdSystem(), lastSurvivorShip.getLogId());
                         return String.format(Utility.INFO_WITHDRAWN_DATE_SUCCESSFULLY_MARKED_AS_DELETED, dhId, log);
                     }
-                    return String.format(Utility.EX_PRODUCT_DATES_XREF_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES_XREF, productRegion.getDhId());
+                    return String.format(Utility.EX_PRODUCT_DATES_XREF_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES_XREF, productRegion.getDhId(), refData.getDhId(), Utility.ART_WITHDRAWN_DATE);
                 }
-                return String.format(Utility.EX_PRODUCT_DATES_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES, productRegion.getDhId());
+                return String.format(Utility.EX_PRODUCT_DATES_DOES_NOT_EXISTING_IN_C_PRODUCT_DATES, productRegion.getDhId(), refData.getDhId(), Utility.ART_WITHDRAWN_DATE);
             }
             return String.format(Utility.EX_PRODUCT_REGION_DOES_NOT_EXISTING_IN_C_PRODUCT_REGION, dhId);
         }

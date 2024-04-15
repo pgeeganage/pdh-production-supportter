@@ -17,10 +17,6 @@ import java.math.BigInteger;
         procedureName = "pdh_utils_pkg.mark_delete_product", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "p_dh_prod_id", type = BigInteger.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "p_ticket_name", type = String.class)})
-
-@NamedStoredProcedureQuery(name = "Product.executeSurvivorShip",
-        procedureName = "merge_util.process_source", parameters = {
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_src_sys", type = String.class)})
 @Entity
 @Table(name = "C_PRODUCT")
 public class Product {

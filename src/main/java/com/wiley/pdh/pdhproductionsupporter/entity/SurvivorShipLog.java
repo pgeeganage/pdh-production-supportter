@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedStoredProcedureQuery(name = "SurvivorShipLog.executeSurvivorShip",
+        procedureName = "merge_util.process_source", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "in_src_sys", type = String.class)})
 @Entity
 @Table(name = "SURVIVORSHIP_LOG")
 @SequenceGenerator(name = "survivorship_log_seq_generator", sequenceName = "SURVIVORSHIP_LOG_SEQ", allocationSize = 1)

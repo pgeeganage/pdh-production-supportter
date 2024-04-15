@@ -15,10 +15,15 @@ public interface SurvivorShipLogRepository extends JpaRepository<SurvivorShipLog
 
     SurvivorShipLog findTopByRowIdSystemAndLogIdGreaterThanOrderByStartTimeDesc(String rowIdSystem, BigInteger logId);
 
-    @Query("SELECT SL FROM SurvivorShipLog AS SL ORDER BY SL.startTime DESC")
+    @Query(value = "SELECT * \n" +
+            "FROM (\n" +
+            "    SELECT * \n" +
+            "    FROM SURVIVORSHIP_LOG \n" +
+            "    ORDER BY START_TIME DESC\n" +
+            ") WHERE ROWNUM = 1", nativeQuery = true)
     SurvivorShipLog findTopByStartTimeDesc();
 
-    @Procedure(name = "Product.executeSurvivorShip")
+    @Procedure(name = "SurvivorShipLog.executeSurvivorShip")
     void executeSurvivorShip(@Param("in_src_sys") String sourceSystem);
 
 
